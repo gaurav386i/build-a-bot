@@ -11,6 +11,11 @@ const store = createStore({
       state.cart.push(robot);
     },
   },
+  getters: {
+    cartSaleItems(state) {
+      return state.cart.filter((item) => item.head.onSale);
+    },
+  },
 });
 
 export default store;
