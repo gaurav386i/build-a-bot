@@ -27,6 +27,11 @@ const store = createStore({
         .then((result) => commit('updateParts', result.data))
         .catch(console.error);
     },
+    addRobotToCart({ commit, state }, robot) {
+      const cart = [...state.cart, robot];
+      axios.post('/api/cart', cart)
+        .then(() => commit('addRobotToCart', robot));
+    },
   },
 });
 
