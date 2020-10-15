@@ -63,7 +63,7 @@ import CollapsibleSection from '../shared/CollapsibleSection.vue';
 export default {
   name: 'RobotBuilder',
   created() {
-    this.$store.dispatch('getParts');
+    this.$store.dispatch('robots/getParts');
   },
   beforeRouteLeave(to, from, next) {
     if (this.addedToCat) {
@@ -102,7 +102,7 @@ export default {
       };
     },
     availableParts() {
-      return this.$store.state.robots.cart.parts;
+      return this.$store.state.robots.parts;
     },
   },
   methods: {
@@ -113,7 +113,7 @@ export default {
        + robot.torso.cost
        + robot.rightArm.cost
        + robot.base.cost;
-      this.$store.dispatch('addRobotToCart', { ...robot, cost })
+      this.$store.dispatch('robots/addRobotToCart', { ...robot, cost })
         .then(() => this.$router.push('/cart'));
       this.addedToCart = true;
     },
